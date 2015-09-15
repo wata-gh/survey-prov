@@ -16,6 +16,8 @@ execute 'change localtime to JST' do
   EOC
 end
 
+package 'git'
+
 package 'python-setuptools'
 
 execute 'install aws-cli' do
@@ -32,6 +34,7 @@ execute 'install ruby' do
   command <<-EOS
   git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
   git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+  source ~/.bashrc
   rbenv install 2.2.3
   rbenv global 2.2.3
 EOS
