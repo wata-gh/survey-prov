@@ -16,7 +16,12 @@ execute 'change localtime to JST' do
   EOC
 end
 
-package 'git'
+%w/git epel-release httpd-devel curl-devel
+   apr-devel apr-util-devel libffi-devel openssh openssl
+   openssl-devel readline-devel libxml2-devel libxslt-devel
+   mysql mysql-server mysql-devel nodejs npm ImageMagick ImageMagick-devel/.each do |pkg|
+  package pkg
+end
 
 package 'python-setuptools'
 
@@ -28,22 +33,13 @@ execute 'install aws-cli' do
 EOS
 end
 
-execute 'install ruby' do
-  user 'webservice'
-  cwd '/home/webservice'
-  command <<-EOS
-  git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
-  git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-  source ~/.bashrc
-  rbenv install 2.2.3
-  rbenv global 2.2.3
-EOS
-  not_if 'test -d ~/.rbenv'
-end
-
 directory '/app/survey' do
   owner 'webservice'
   group 'webservice'
   mode  '755'
   action :create
+end
+
+service 'mysqld' do
+  action [:enable, :start]
 end

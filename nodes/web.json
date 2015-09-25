@@ -1,10 +1,17 @@
 {
-"base": {
-  "users": {
-    "webservice": {
-      "create-home": "",
-      "password": "$1$Tfpgg3Xp$o7PG4t/cWN0gfAX2mxAK90"
+  "base": {
+    "users": {
+      "webservice": {
+        "create-home": "",
+        "password": "$1$Tfpgg3Xp$o7PG4t/cWN0gfAX2mxAK90"
+      }
     }
+  },
+  "rtn_rbenv": {
+    "user": "webservice",
+    "versions": {
+      "2.2.3": ["bundler"]
+    },
+    "global": "2.2.3"
   }
-}
 }
