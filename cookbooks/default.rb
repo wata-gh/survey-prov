@@ -39,7 +39,3 @@ directory '/app/survey' do
   mode  '755'
   action :create
 end
-
-service 'mysqld' do
-  action [:enable, :start]
-end
