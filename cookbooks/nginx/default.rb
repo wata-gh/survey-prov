@@ -1,6 +1,6 @@
 remote_directory '/etc/nginx' do
   action :create
-  source '/etc/nginx'
+  source 'files/etc/nginx'
   owner 'webservice'
   group 'webservice'
 end
