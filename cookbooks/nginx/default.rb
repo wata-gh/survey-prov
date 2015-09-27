@@ -1,4 +1,5 @@
-remote_file '/etc/nginx/conf.d/survey.conf' do
+remote_directory '/etc/nginx' do
+  action :create
   owner 'webservice'
   group 'webservice'
 end
