@@ -19,7 +19,9 @@ end
 %w/git epel-release httpd-devel curl-devel
    apr-devel apr-util-devel libffi-devel openssh openssl
    openssl-devel readline-devel libxml2-devel libxslt-devel
-   mysql mysql-server mysql-devel nodejs npm ImageMagick ImageMagick-devel/.each do |pkg|
+   mysql mysql-server mysql-devel nodejs npm ImageMagick ImageMagick-devel
+   docker-io
+   /.each do |pkg|
   package pkg
 end
 
@@ -32,6 +34,15 @@ execute 'install aws-cli' do
     pip install awscli
 EOS
 end
+
+execute 'install docker-component' do
+  user 'root'
+  command <<-EOS
+    curl -L https://github.com/docker/compose/releases/download/1.4.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+    chmod +x /usr/local/bin/docker-compose
+EOS
+end
+
 
 directory '/app/survey' do
   owner 'webservice'
