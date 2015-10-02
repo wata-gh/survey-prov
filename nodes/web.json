@@ -13,5 +13,8 @@
       "2.2.3": ["bundler"]
     },
     "global": "2.2.3"
+  },
+  "nginx": {
+    "start": false
   }
 }

@@ -4,3 +4,7 @@ remote_directory '/etc/nginx' do
   owner 'webservice'
   group 'webservice'
 end
+
+service 'nginx' do
+  action :start
+end
